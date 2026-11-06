@@ -1,0 +1,102 @@
+[
+  {
+    "name": "clock",
+    "source": "https://static.wixstatic.com/media/408f91_625b37ec60c94a1eb73d528b8c6d957d~mv2.jpg",
+    "source_page": "https://www.dhisclock.com/",
+    "original_dimensions": {
+      "width": 1920,
+      "height": 1920
+    },
+    "file": "clock.webp"
+  },
+  {
+    "name": "gallery-1",
+    "source": "https://static.wixstatic.com/media/408f91_9535dbb5f16f4e768a3a4e4c7c1753be~mv2.png",
+    "source_page": "https://www.dhisclock.com/",
+    "original_dimensions": {
+      "width": 1080,
+      "height": 1350
+    },
+    "file": "gallery-1.webp"
+  },
+  {
+    "name": "gallery-2",
+    "source": "https://static.wixstatic.com/media/408f91_7b053395dc594b169115fa8acbae45ba~mv2.png",
+    "source_page": "https://www.dhisclock.com/",
+    "original_dimensions": {
+      "width": 1080,
+      "height": 1350
+    },
+    "file": "gallery-2.webp"
+  },
+  {
+    "name": "logo-story-1",
+    "source": "https://static.wixstatic.com/media/408f91_1867e95ab5a240fc9cb363b7376845b5~mv2.png",
+    "source_page": "https://www.dhisclock.com/",
+    "original_dimensions": {
+      "width": 1080,
+      "height": 1350
+    },
+    "file": "logo-story-1.webp"
+  },
+  {
+    "name": "logo-story-2",
+    "source": "https://static.wixstatic.com/media/408f91_cd2d95a270174b4795cd3e8056074491~mv2.png",
+    "source_page": "https://www.dhisclock.com/",
+    "original_dimensions": {
+      "width": 1080,
+      "height": 1350
+    },
+    "file": "logo-story-2.webp"
+  },
+  {
+    "name": "recognition-1",
+    "source": "https://static.wixstatic.com/media/408f91_b05fba47146f4b959079d6a79d106030~mv2.png",
+    "source_page": "https://www.dhisclock.com/",
+    "original_dimensions": {
+      "width": 1080,
+      "height": 1350
+    },
+    "file": "recognition-1.webp"
+  },
+  {
+    "name": "recognition-2",
+    "source": "https://static.wixstatic.com/media/408f91_8df7173bd39b40b38e09db388fcacf83~mv2.png",
+    "source_page": "https://www.dhisclock.com/",
+    "original_dimensions": {
+      "width": 1080,
+      "height": 1350
+    },
+    "file": "recognition-2.webp"
+  },
+  {
+    "name": "journal-1",
+    "source": "https://static.wixstatic.com/media/408f91_6865b810e5d845f9b91e6f991b901c93~mv2.png",
+    "source_page": "https://www.dhisclock.com/",
+    "original_dimensions": {
+      "width": 1800,
+      "height": 1800
+    },
+    "file": "journal-1.webp"
+  },
+  {
+    "name": "journal-2",
+    "source": "https://static.wixstatic.com/media/408f91_e0acd6ae88484936bc7c79ba7db23200~mv2.png",
+    "source_page": "https://www.dhisclock.com/",
+    "original_dimensions": {
+      "width": 1024,
+      "height": 1024
+    },
+    "file": "journal-2.webp"
+  },
+  {
+    "name": "favicon",
+    "source": "https://static.wixstatic.com/media/408f91_3074ee53c2cd4e8ab1b2340e8f283b10~mv2.png",
+    "source_page": "https://www.dhisclock.com/",
+    "original_dimensions": {
+      "width": 1080,
+      "height": 1350
+    },
+    "file": "favicon.webp"
+  }
+]
