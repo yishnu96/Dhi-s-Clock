@@ -152,3 +152,10 @@ Dhi’s Clock · Home · About Dhi · YouTube · dhisclock@dauji.net
 - Add the supplied Amazon Singapore author-books link to About.
 - Restore +91 88820 88750 as a tappable phone link in both footers and the Home FAQ.
 - Start in automatic mode for a new browser session; a click switches the current light/dark appearance. Manual choice persists across page navigation within the session. Auto resets to local time.
+
+## Latest mobile/content revision
+- Hero copy: A personalised timepiece guiding you on when to act, pursue, begin or retreat.
+- Purchase note: Personalisation and checkout take place on Amazon.
+- Product context links: Created by Saudamini Mishra; Product details on Amazon; Questions before you order?
+- Move historical milestone evidence immediately after the product explanation.
+- Add From Dhi’s journal with the two exact user-supplied blog.dhisclock.com article destinations. Link labels are concise editorial descriptions, not quotations or claims of clinical validation.

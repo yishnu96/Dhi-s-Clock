@@ -1,0 +1,24 @@
+# Dependencies and generated production output
+node_modules/
+/dist/
+
+# Local environment and hosting state
+.env
+.env.*
+!.env.example
+.netlify/
+.vercel/
+
+# Logs, caches and temporary files
+*.log
+.cache/
+coverage/
+__pycache__/
+*.pyc
+*.tmp
+*.swp
+
+# Operating-system files
+.DS_Store
+Thumbs.db
+Desktop.ini

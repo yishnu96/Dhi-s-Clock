@@ -3,7 +3,6 @@
   const root = document.documentElement;
   const theme = document.querySelector('#theme-toggle');
   const themeLabel = document.querySelector('#theme-label');
-  const automatic = document.querySelector('#theme-auto');
   const themeMeta = document.querySelector('meta[name="theme-color"]');
   let preference = 'auto';
   try {
@@ -20,10 +19,9 @@
     if (themeMeta) themeMeta.content = mode === 'dark' ? '#171717' : '#ffffff';
     if (!theme) return;
     const next = mode === 'dark' ? 'light' : 'dark';
-    themeLabel.textContent = preference === 'auto' ? 'Auto' : preference === 'dark' ? 'Dark' : 'Light';
-    theme.setAttribute('aria-label', `${preference === 'auto' ? 'Automatic' : 'Manual'} ${mode} theme. Switch to ${next} mode`);
+    themeLabel.textContent = next === 'dark' ? 'Dark mode' : 'Light mode';
+    theme.setAttribute('aria-label', `Switch to ${next} mode`);
     theme.title = `Switch to ${next} mode`;
-    automatic.hidden = preference === 'auto';
   }
   function setPreference(value) {
     preference = value;
@@ -33,7 +31,6 @@
   if (theme) {
     theme.closest('.theme-control').hidden = false;
     theme.addEventListener('click', () => setPreference(root.dataset.mode === 'dark' ? 'light' : 'dark'));
-    automatic.addEventListener('click', () => setPreference('auto'));
   }
   syncTheme();
   setInterval(() => { if (preference === 'auto' && !document.hidden) syncTheme(); }, 60000);

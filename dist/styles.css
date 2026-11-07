@@ -159,7 +159,6 @@ button:disabled,select:disabled{opacity:.5;cursor:not-allowed}
 
 .theme-toggle{display:inline-flex;align-items:center;gap:8px;min-height:44px;padding:8px;font-size:13px;border:1px solid var(--color-rule);background:var(--color-paper);color:var(--color-ink)}
 .theme-toggle:hover{background:var(--color-paper-2)}
-.theme-auto{font-size:12px;text-decoration:underline;text-underline-offset:4px;min-width:44px;min-height:44px;padding:4px;color:var(--color-muted)}
 .recognition-list{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:40px 32px;border:0;margin-top:40px}
 .recognition-item{display:block;min-width:0;border-bottom:1px solid var(--color-rule);padding-bottom:28px}
 .recognition-preview{display:block;position:relative;background:var(--color-paper-2);overflow:hidden}
@@ -224,3 +223,50 @@ button:disabled,select:disabled{opacity:.5;cursor:not-allowed}
 }
 @media(max-width:380px){.hero-media{max-width:220px}.hero{gap:16px}.hero-actions{gap:12px}.hero-actions .button{font-size:13px;padding-inline:12px}.hero-actions .text-link{font-size:12px}.journal-link{gap:16px}.journal-link h3{font-size:23px}}
 @media(prefers-reduced-motion:reduce){.hero-heading{animation:none}}
+
+@media(max-width:380px){.hero-actions .text-link svg{display:none}}
+
+/* One recognisable theme action; local-time selection remains the initial default. */
+.theme-toggle{min-width:112px;justify-content:center;padding:8px 12px;white-space:nowrap}
+.theme-toggle .theme-moon{display:block;width:18px;height:18px}
+.theme-toggle .theme-sun{display:none;width:18px;height:18px}
+[data-mode="dark"] .theme-toggle .theme-moon{display:none}
+[data-mode="dark"] .theme-toggle .theme-sun{display:block}
+.about-hero{grid-template-areas:"title portrait" "copy portrait";grid-template-rows:auto auto;align-content:center;row-gap:24px}
+.about-heading{grid-area:title;align-self:end}
+.about-heading p{font-family:var(--font-display);font-size:36px;line-height:1.3;margin-top:16px}
+.about-hero>.prose{grid-area:copy;align-self:start}
+.about-hero>.prose>p:first-child{margin-top:0}
+.about-hero>figure{grid-area:portrait}
+@media(max-width:760px){
+ .header-inner{padding-top:12px}
+ .main-nav{gap:16px;align-items:center}
+ .main-nav .mobile-shop{display:inline-flex;align-items:center;justify-content:center;gap:8px;min-height:44px;padding:8px 12px;background:var(--color-accent);color:var(--color-accent-ink);font-size:12px;font-weight:600;border:1px solid var(--color-accent)}
+ .main-nav .mobile-shop::after{display:none}
+ .main-nav .mobile-shop svg{width:16px;height:16px}
+ .main-nav .mobile-shop:hover{background:var(--color-paper);color:var(--color-ink)}
+ .about-hero{grid-template-areas:"title" "portrait" "copy";grid-template-columns:minmax(0,1fr);gap:28px;padding-block:28px 52px}
+ .about-hero h1{font-size:clamp(40px,10.5vw,52px);line-height:1.08;max-width:none;letter-spacing:-1.2px;text-align:center}
+ .about-heading p{font-size:26px;margin-top:8px;text-align:center}
+ .about-hero>figure{width:100%;max-width:280px;justify-self:center}
+ .about-hero figcaption{font-size:12px;margin-top:12px;text-align:center}
+ .about-hero .prose>p{font-size:15px;line-height:1.75;margin-top:16px}
+ .about-hero .text-link{margin-top:16px}
+ .section-heading{gap:20px}
+ .journal-list{gap:24px}
+ .journal-link{grid-template-columns:88px minmax(0,1fr);gap:16px;padding:20px;background:var(--color-paper-2);border:1px solid var(--color-rule)}
+ .journal-link>div{display:contents}
+ .journal-link>img{grid-column:1;grid-row:1;align-self:center;aspect-ratio:1;height:auto}
+ .journal-link h3{grid-column:2;grid-row:1;font-size:25px;line-height:1.2;align-self:center}
+ .journal-link p{grid-column:1/-1;font-size:14px;line-height:1.7;margin:0}
+ .journal-link .article-action{grid-column:1/-1;justify-content:space-between;margin:0;padding-top:12px;border-top:1px solid var(--color-rule);font-weight:600;font-size:14px}
+ .media-heading{gap:20px}
+ .gallery-more>summary{font-size:14px}
+ .creator-copy p{margin-block:20px}
+}
+@media(max-width:380px){
+ .main-nav{gap:12px}.main-nav a{font-size:12px}.main-nav .mobile-shop{padding-inline:8px;font-size:11px;gap:4px}
+ .theme-toggle{min-width:108px;font-size:12px}
+ .about-hero>figure{max-width:248px}
+ .journal-link{grid-template-columns:72px minmax(0,1fr);gap:12px;padding:16px}.journal-link h3{font-size:22px}
+}
