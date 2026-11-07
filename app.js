@@ -1,108 +1,109 @@
-/* Progressive enhancement: links, text and disclosures work without this file. */
+/* Progressive enhancement: purchase links, disclosures and media work without JS. */
 (() => {
   const root = document.documentElement;
-  const themeButton = document.querySelector('.theme-toggle');
-  const scheme = matchMedia('(prefers-color-scheme: dark)');
-  const currentMode = () => root.dataset.mode || (scheme.matches ? 'dark' : 'light');
+  const theme = document.querySelector('#theme-toggle');
+  const themeLabel = document.querySelector('#theme-label');
+  const automatic = document.querySelector('#theme-auto');
+  const themeMeta = document.querySelector('meta[name="theme-color"]');
+  let preference = 'auto';
+  try {
+    const saved = sessionStorage.getItem('dhi-theme');
+    if (['light', 'dark'].includes(saved)) preference = saved;
+  } catch { /* Automatic mode still works when storage is unavailable. */ }
+  function localMode() {
+    const hour = new Date().getHours();
+    return hour >= 6 && hour < 18 ? 'light' : 'dark';
+  }
   function syncTheme() {
-    const dark = currentMode() === 'dark';
-    themeButton.setAttribute('aria-label', dark ? 'Switch to light mode' : 'Switch to dark mode');
-    themeButton.setAttribute('aria-pressed', String(dark));
-    document.querySelector('meta[name="theme-color"]').content = dark ? '#171717' : '#fafafa';
-  }
-  themeButton.hidden = false;
-  themeButton.addEventListener('click', () => {
-    const mode = currentMode() === 'dark' ? 'light' : 'dark';
+    const mode = preference === 'auto' ? localMode() : preference;
     root.dataset.mode = mode;
-    try { localStorage.setItem('dhi-mode', mode); } catch { /* Private browsing may block storage. */ }
-    syncTheme();
-  });
-  scheme.addEventListener('change', syncTheme);
-  syncTheme();
-
-  const menuButton = document.querySelector('.menu-toggle');
-  const menu = document.querySelector('#mobile-menu');
-  menuButton.hidden = false;
-  function closeMenu(restoreFocus = false) {
-    menu.hidden = true;
-    menuButton.setAttribute('aria-expanded', 'false');
-    menuButton.setAttribute('aria-label', 'Open navigation');
-    if (restoreFocus) menuButton.focus();
+    if (themeMeta) themeMeta.content = mode === 'dark' ? '#171717' : '#ffffff';
+    if (!theme) return;
+    const next = mode === 'dark' ? 'light' : 'dark';
+    themeLabel.textContent = preference === 'auto' ? 'Auto' : preference === 'dark' ? 'Dark' : 'Light';
+    theme.setAttribute('aria-label', `${preference === 'auto' ? 'Automatic' : 'Manual'} ${mode} theme. Switch to ${next} mode`);
+    theme.title = `Switch to ${next} mode`;
+    automatic.hidden = preference === 'auto';
   }
-  menuButton.addEventListener('click', () => {
-    const open = menu.hidden;
-    menu.hidden = !open;
-    menuButton.setAttribute('aria-expanded', String(open));
-    menuButton.setAttribute('aria-label', open ? 'Close navigation' : 'Open navigation');
-  });
-  menu.addEventListener('click', e => { if (e.target.closest('a')) closeMenu(); });
-  document.addEventListener('keydown', e => { if (e.key === 'Escape' && !menu.hidden) closeMenu(true); });
-  matchMedia('(min-width: 901px)').addEventListener('change', e => { if (e.matches) closeMenu(); });
+  function setPreference(value) {
+    preference = value;
+    try { sessionStorage.setItem('dhi-theme', preference); } catch {}
+    syncTheme();
+  }
+  if (theme) {
+    theme.closest('.theme-control').hidden = false;
+    theme.addEventListener('click', () => setPreference(root.dataset.mode === 'dark' ? 'light' : 'dark'));
+    automatic.addEventListener('click', () => setPreference('auto'));
+  }
+  syncTheme();
+  setInterval(() => { if (preference === 'auto' && !document.hidden) syncTheme(); }, 60000);
+  document.addEventListener('visibilitychange', () => { if (!document.hidden) syncTheme(); });
 
   const dialog = document.querySelector('.gallery-dialog');
-  const image = document.querySelector('#dialog-image');
-  const caption = document.querySelector('#dialog-caption');
-  const count = document.querySelector('.gallery-count');
-  const imageError = document.querySelector('.dialog-error');
-  const fallback = document.querySelector('#dialog-fallback');
-  const gallery = [...document.querySelectorAll('[data-gallery]')];
-  let selected = 0;
-  let opener = null;
-  function showImage(index) {
-    selected = (index + gallery.length) % gallery.length;
-    const link = gallery[selected];
-    image.hidden = false;
-    imageError.hidden = true;
-    image.alt = link.dataset.caption;
-    image.src = link.href;
-    fallback.href = link.href;
-    caption.textContent = link.dataset.caption;
-    count.textContent = `${selected + 1} / ${gallery.length}`;
-  }
-  image.addEventListener('error', () => { image.hidden = true; imageError.hidden = false; });
-  if (typeof dialog.showModal === 'function') {
-    gallery.forEach((link, index) => link.addEventListener('click', e => {
-      if (e.ctrlKey || e.metaKey || e.shiftKey || e.altKey || e.button !== 0) return;
-      e.preventDefault();
+  const gallery = [...document.querySelectorAll('[data-gallery]')].filter(link => !link.closest('[hidden]'));
+  if (dialog && typeof dialog.showModal === 'function' && gallery.length) {
+    const image = dialog.querySelector('#dialog-image');
+    const caption = dialog.querySelector('#dialog-caption');
+    const count = dialog.querySelector('.gallery-count');
+    const failure = dialog.querySelector('.dialog-error');
+    const fallback = dialog.querySelector('#dialog-fallback');
+    let selected = 0;
+    let opener;
+    function showImage(index) {
+      selected = (index + gallery.length) % gallery.length;
+      const link = gallery[selected];
+      image.hidden = false;
+      failure.hidden = true;
+      image.alt = link.querySelector('img')?.alt || link.dataset.caption;
+      image.src = link.href;
+      fallback.href = link.href;
+      caption.textContent = link.dataset.caption;
+      count.textContent = `${selected + 1} / ${gallery.length}`;
+    }
+    image.addEventListener('error', () => { image.hidden = true; failure.hidden = false; });
+    gallery.forEach((link, index) => link.addEventListener('click', event => {
+      if (event.ctrlKey || event.metaKey || event.shiftKey || event.altKey || event.button !== 0) return;
+      event.preventDefault();
       opener = link;
       showImage(index);
       dialog.showModal();
     }));
-    document.querySelector('.dialog-close').addEventListener('click', () => dialog.close());
-    document.querySelector('.gallery-prev').addEventListener('click', () => showImage(selected - 1));
-    document.querySelector('.gallery-next').addEventListener('click', () => showImage(selected + 1));
-    dialog.addEventListener('keydown', e => {
-      if (e.key === 'ArrowLeft') { e.preventDefault(); showImage(selected - 1); }
-      if (e.key === 'ArrowRight') { e.preventDefault(); showImage(selected + 1); }
+    dialog.querySelector('.dialog-close').addEventListener('click', () => dialog.close());
+    dialog.querySelector('.gallery-prev').addEventListener('click', () => showImage(selected - 1));
+    dialog.querySelector('.gallery-next').addEventListener('click', () => showImage(selected + 1));
+    dialog.addEventListener('keydown', event => {
+      if (event.key === 'ArrowLeft') { event.preventDefault(); showImage(selected - 1); }
+      if (event.key === 'ArrowRight') { event.preventDefault(); showImage(selected + 1); }
     });
-    dialog.addEventListener('click', e => {
-      if (e.target !== dialog) return;
-      const box = dialog.getBoundingClientRect();
-      if (e.clientX < box.left || e.clientX > box.right || e.clientY < box.top || e.clientY > box.bottom) dialog.close();
+    dialog.addEventListener('click', event => {
+      if (event.target !== dialog) return;
+      const rect = dialog.getBoundingClientRect();
+      if (event.clientX < rect.left || event.clientX > rect.right || event.clientY < rect.top || event.clientY > rect.bottom) dialog.close();
     });
-    dialog.addEventListener('close', () => opener?.focus({preventScroll:true}));
+    dialog.addEventListener('close', () => opener?.focus({ preventScroll: true }));
   }
 
+  document.querySelectorAll('video').forEach(video => {
+    video.addEventListener('play', () => document.querySelectorAll('video').forEach(other => { if (other !== video) other.pause(); }));
+    video.addEventListener('error', () => {
+      const message = video.parentElement.querySelector('.video-error');
+      if (message) message.hidden = false;
+    });
+  });
+  document.querySelectorAll('.gallery-more').forEach(details => details.addEventListener('toggle', () => {
+    if (!details.open) details.querySelectorAll('video').forEach(video => video.pause());
+  }));
   const reduced = matchMedia('(prefers-reduced-motion: reduce)');
-  if ('IntersectionObserver' in window) {
-    const reveal = new IntersectionObserver(entries => {
-      for (const entry of entries) {
-        if (!entry.isIntersecting) continue;
+  if ('IntersectionObserver' in window && !reduced.matches) {
+    const observer = new IntersectionObserver(entries => {
+      entries.forEach(entry => {
+        if (!entry.isIntersecting) return;
         if (!reduced.matches) entry.target.classList.add('arrive');
-        reveal.unobserve(entry.target);
-      }
-    }, {threshold: 0.12});
-    document.querySelectorAll('.section-heading, .clock-copy, .gallery-heading, .journal-heading, .contact-grid').forEach(el => reveal.observe(el));
-    const navigation = new IntersectionObserver(entries => {
-      for (const entry of entries) {
-        if (!entry.isIntersecting) continue;
-        document.querySelectorAll('.desktop-nav a').forEach(link => {
-          if (link.hash === `#${entry.target.id}`) link.setAttribute('aria-current', 'location');
-          else link.removeAttribute('aria-current');
-        });
-      }
-    }, {rootMargin: '-15% 0px -55% 0px'});
-    document.querySelectorAll('main section[id]').forEach(el => navigation.observe(el));
+        observer.unobserve(entry.target);
+      });
+    }, { threshold: .12 });
+    document.querySelectorAll('[data-reveal]').forEach(el => observer.observe(el));
   }
-  document.querySelector('#copyright-year').textContent = new Date().getFullYear();
+  const year = document.querySelector('#copyright-year');
+  if (year) year.textContent = new Date().getFullYear();
 })();

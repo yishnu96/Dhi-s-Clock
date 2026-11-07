@@ -1,6 +1,8 @@
 # Design system
-Mode: Persuade, with readable long-form supporting material.
-Idea: a contemporary author’s monograph, with the clock’s repeating cycle expressed through typography and a factual cycle diagram.
-White/near-black surfaces and neutral grays only. Display: Bodoni Moda; body: Manrope. Self-hosted Latin subsets with swap fallback.
-Generous capped container, asymmetrical hero, large image plate, open editorial text, selective hairlines. No card grid of invented benefits. Theme tokens support independently tuned light and dark modes.
-Buttons have 44px minimum hit areas, obvious focus rings and subtle state feedback. Native scrolling. Short finite motion, no perpetual rotation. Reduced motion disables all animation. Original images use monochrome presentation; gallery enlargement preserves originals.
+Primary direction: Hallmark custom editorial product presentation. Taste, Impeccable, UI/UX Pro Max and frontend-design support spacing, accessibility and polish.
+White daytime and near-black nighttime surfaces; all photographs remain in colour. Visitor-local day is 06:00–17:59; night otherwise. Automatic by default in a new session; one-click light/dark toggle with an Auto reset. Manual choices persist for the session. User explicitly selected visitor-local time.
+Self-hosted Bodoni Moda display and Manrope body. Capped layouts, generous whitespace, thin rules, asymmetrical product hero. Signature: the actual circular digital clock large and uncropped. No generated imagery.
+Finite fade/slide entrance, scroll reveals and hover feedback; native smooth scrolling; reduced-motion support; content visible without JavaScript. Videos preload none, manual playback. Entrance is a reversible interpretation of the unclear transition request, following user instruction to proceed.
+Home: product explanation and Amazon journey. About: creator, books and evidence. All supplied media integrated; denser collections can expand. No standalone gallery.
+
+Latest revision: campaign gallery hidden; milestones on Home. About recognition uses large visible previews with persistent View labels.

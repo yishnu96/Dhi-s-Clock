@@ -1,4 +1,2 @@
 # Product
-Dhi’s Clock is the personal-guidance concept of author-inventor and metaphysician Saudamini Mishra, also known as Dhi. Source: https://www.dhisclock.com/.
-The site helps unfamiliar and uncertain visitors understand her work, view original achievements and gallery material, read her published writing, and contact her.
-The user approved an editorial monochrome redesign with light/dark modes and original images only. Tone: thoughtful, personal, clear and composed. The conversion action is email/phone contact, not purchase or a fabricated booking flow.
+Dhi’s Clock is a birthday-personalised physical digital clock created by Saudamini Mishra (Dhi). Primary conversion: purchase/customisation on Amazon https://amzn.in/d/0ajtVb94. Audience: curious, uncertain buyers seeking clarity and credibility. Tone: simple, thoughtful, editorial. Two pages: Home and About Dhi, incorporating galleries/videos. Email: dhisclock@dauji.net. No invented testimonials or scientific-validation claims. Books catalogue supplied by user: https://www.amazon.sg/s?i=stripbooks&rh=p_27%3ASaudamini%2BMishra&ref=dp_byline_sr_book_1. Phone: +91 88820 88750.

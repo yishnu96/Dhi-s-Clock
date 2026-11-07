@@ -1,35 +1,17 @@
 :root {
-  --space-3xs: 2px; --space-2xs: 4px; --space-xs: 8px; --space-sm: 12px; --space-md: 16px; --space-lg: 24px; --space-xl: 40px; --space-2xl: 64px; --space-3xl: 96px; --space-4xl: 144px;
-  --text-xs: 0.8125rem; --text-sm: 0.875rem; --text-md: 1rem; --text-lg: 1.25rem; --text-xl: 1.5625rem; --text-2xl: 1.953rem; --text-3xl: 2.441rem;
-  --text-display-s: clamp(2.25rem, 4vw + 0.5rem, 3.75rem); --text-display: clamp(2.75rem, 5vw + 1rem, 5.25rem);
-  --text-section: clamp(2rem, 2.5vw + 1rem, 3.5rem); --text-title: clamp(1.25rem, 0.75vw + 0.875rem, 1.625rem); --text-lead: clamp(1.125rem, 0.35vw + 1rem, 1.375rem);
-  --ease-out: cubic-bezier(0.16, 1, 0.3, 1); --ease-in: cubic-bezier(0.7, 0, 0.84, 0); --ease-in-out: cubic-bezier(0.65, 0, 0.35, 1);
-  --dur-micro: 120ms; --dur-short: 220ms; --dur-long: 420ms;
-  --color-error: oklch(52% 0.19 27); --color-success: oklch(50% 0.12 150);
-  --container: 1440px; --gutter: 64px; --gap-columns: 32px; --section-gap-s: 120px; --section-gap: 144px; --section-gap-l: 176px;
-  --z-base: 1; --z-raised: 10; --z-dropdown: 100; --z-sticky: 200; --z-sticky-nav: 300; --z-modal: 400; --z-toast: 500; --z-tooltip: 600;
-  --color-paper: #fafafa; --color-paper-2: #eeeeec; --color-paper-3: #e3e3e1;
-  --color-ink: #202020; --color-ink-2: #505050; --color-muted: #626262;
-  --color-rule: #d0d0ce;
-  --color-accent: #202020; --color-accent-ink: #fafafa; --color-focus: #505050;
-  --color-night: #202020; --color-night-ink: #f5f5f3; --color-night-muted: #bdbdbb; --color-night-rule: #505050;
-  --color-overlay: rgb(0 0 0 / 82%);
-  --font-display: "Bodoni Moda", Georgia, serif; --font-body: "Manrope", sans-serif; --font-outlier: var(--font-body);
-  --radius-card: 4px; --radius-pill: 999px; --rule-hair: 1px; --shadow-card: none;
-  --tracking-display: -0.02em;
+  --color-paper: #ffffff; --color-paper-2: #f5f5f3; --color-paper-3: #eaeae7;
+  --color-ink: #1c1c1a; --color-ink-2: #4f4f4b; --color-muted: #696965; --color-rule: #dadad5;
+  --color-accent: #1c1c1a; --color-accent-ink: #ffffff; --color-focus: #666660;
+  --color-night: #181818; --color-night-ink: #f8f8f5; --color-night-muted: #c4c4bf; --color-night-rule: #454541;
+  --color-image: #ffffff; --color-image-ink: #242421; --color-overlay: rgb(0 0 0 / 88%);
+  --font-display: 'Bodoni Moda', Georgia, serif; --font-body: 'Manrope', sans-serif;
+  --container: 1400px; --gutter: clamp(24px, 5vw, 80px); --space-3xl: 96px;
+  --text-md: 1rem; --ease-out: cubic-bezier(.16,1,.3,1); --dur-short: 220ms;
   color-scheme: light;
 }
-[data-mode="dark"] {
-  --color-paper: #171717; --color-paper-2: #232323; --color-paper-3: #303030;
-  --color-ink: #eeeeec; --color-ink-2: #c2c2bf; --color-muted: #adadaa;
-  --color-rule: #454543; --color-accent: #eeeeec; --color-accent-ink: #171717; --color-focus: #d0d0ce;
+[data-mode='dark'] {
+  --color-paper: #171717; --color-paper-2: #222222; --color-paper-3: #30302e;
+  --color-ink: #f5f5ef; --color-ink-2: #c5c5bf; --color-muted: #adada7; --color-rule: #41413e;
+  --color-accent: #f5f5ef; --color-accent-ink: #171717; --color-focus: #cecec5;
   color-scheme: dark;
-}
-@media (prefers-color-scheme: dark) {
-  :root:not([data-mode]) {
-    --color-paper: #171717; --color-paper-2: #232323; --color-paper-3: #303030;
-    --color-ink: #eeeeec; --color-ink-2: #c2c2bf; --color-muted: #adadaa;
-    --color-rule: #454543; --color-accent: #eeeeec; --color-accent-ink: #171717; --color-focus: #d0d0ce;
-    color-scheme: dark;
-  }
 }

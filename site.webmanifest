@@ -1,0 +1,11 @@
+{
+  "name": "Dhi’s Clock",
+  "short_name": "Dhi’s Clock",
+  "description": "A personalised clock for a life in sync with your time.",
+  "start_url": "/",
+  "scope": "/",
+  "display": "standalone",
+  "background_color": "#ffffff",
+  "theme_color": "#ffffff",
+  "icons": [{ "src": "/assets/favicon.svg", "sizes": "any", "type": "image/svg+xml", "purpose": "any" }]
+}
