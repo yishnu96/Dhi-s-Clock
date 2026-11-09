@@ -32,7 +32,7 @@ function head(page){
  {'@type':'WebSite','@id':'https://www.dhisclock.com/#website','name':'Dhi’s Clock','url':'https://www.dhisclock.com/','publisher':{'@id':'https://www.dhisclock.com/#organization'}},
  {'@type':about?'AboutPage':'WebPage','@id':url+'#webpage','url':url,'name':title,'description':description,'isPartOf':{'@id':'https://www.dhisclock.com/#website'},...(about?{mainEntity:{'@id':'https://www.dhisclock.com/about.html#dhi'}}:{})} ]};
  return `<!doctype html>
-<html lang="en"><head>
+<html lang="en" data-mode="light" data-theme-lock="light"><head>
 <meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
 <meta name="theme-color" content="#ffffff"><title>${esc(title)}</title>
 <meta name="description" content="${esc(description)}"><meta name="robots" content="index,follow,max-image-preview:large">
@@ -42,7 +42,8 @@ function head(page){
 <meta name="twitter:card" content="summary_large_image"><meta name="twitter:title" content="${esc(title)}"><meta name="twitter:description" content="${esc(description)}"><meta name="twitter:image" content="https://www.dhisclock.com/assets/client/product-clock.webp"><meta name="twitter:image:alt" content="Dhi’s personalised digital clock">
 <link rel="icon" href="assets/client/clock-transparent.png" type="image/png"><link rel="manifest" href="site.webmanifest"><link rel="describedby" href="llms.txt" type="text/plain">
 <link rel="preload" href="assets/bodoni-moda-latin.woff2" as="font" type="font/woff2" crossorigin><link rel="preload" href="assets/manrope-latin.woff2" as="font" type="font/woff2" crossorigin>
-<script>try{var p=sessionStorage.getItem('dhi-theme'),h=new Date().getHours();document.documentElement.dataset.mode=p==='light'||p==='dark'?p:h>=6&&h<18?'light':'dark'}catch{document.documentElement.dataset.mode=new Date().getHours()>=6&&new Date().getHours()<18?'light':'dark'}</script>
+<!-- Temporarily light-only. Theme button stays hidden; dark-mode code is retained. Remove data-theme-lock to restore switching. -->
+<script>if(document.documentElement.dataset.themeLock!=="light"){try{var p=sessionStorage.getItem('dhi-theme'),h=new Date().getHours();document.documentElement.dataset.mode=p==='light'||p==='dark'?p:h>=6&&h<18?'light':'dark'}catch{document.documentElement.dataset.mode=new Date().getHours()>=6&&new Date().getHours()<18?'light':'dark'}}</script>
 <link rel="stylesheet" href="tokens.css?v=${revision}"><link rel="stylesheet" href="base.css?v=${revision}"><link rel="stylesheet" href="styles.css?v=${revision}"><script src="app.js?v=${revision}" defer></script>
 <script type="application/ld+json">${JSON.stringify(schema)}</script>
 </head><body id="top"><a class="skip-link" href="#main">Skip to content</a>

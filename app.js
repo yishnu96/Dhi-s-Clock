@@ -1,6 +1,9 @@
 /* Progressive enhancement: purchase links, disclosures and media work without JS. */
 (() => {
   const root = document.documentElement;
+  // Temporarily light-only: hide the switch, retaining dark/automatic theme code for later.
+  // Remove data-theme-lock from the generated HTML to restore the theme switch.
+  const lightOnly = root.dataset.themeLock === 'light';
   const theme = document.querySelector('#theme-toggle');
   const themeLabel = document.querySelector('#theme-label');
   const themeMeta = document.querySelector('meta[name="theme-color"]');
@@ -14,7 +17,7 @@
     return hour >= 6 && hour < 18 ? 'light' : 'dark';
   }
   function syncTheme() {
-    const mode = preference === 'auto' ? localMode() : preference;
+    const mode = lightOnly ? 'light' : preference === 'auto' ? localMode() : preference;
     root.dataset.mode = mode;
     if (themeMeta) themeMeta.content = mode === 'dark' ? '#171717' : '#ffffff';
     if (!theme) return;
@@ -28,7 +31,7 @@
     try { sessionStorage.setItem('dhi-theme', preference); } catch {}
     syncTheme();
   }
-  if (theme) {
+  if (theme && !lightOnly) {
     theme.closest('.theme-control').hidden = false;
     theme.addEventListener('click', () => setPreference(root.dataset.mode === 'dark' ? 'light' : 'dark'));
   }

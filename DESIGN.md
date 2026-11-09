@@ -20,3 +20,5 @@ Contained image stages keep mixed archive proportions aligned without cropping. 
 Gallery visibility: user explicitly requested all gallery images visible on 9 November. Evidence collections render in full with no collapsible controls. FAQ disclosures remain unchanged.
 
 Media organization, 9 November: photo collections show short titles without descriptive paragraphs. How the clock works follows the concept, combining campaign use scenes and film. Identity/history media sit in Milestones. Press uses four desktop/two mobile columns; event photos use five desktop/three mobile columns with videos separated into large frames. All images remain visible, uncropped and linked to originals.
+
+Temporary light-only mode: theme button is hidden, with dark/automatic code retained. Remove data-theme-lock from the generated HTML to restore switching. User requested this on 9 November 2026.
