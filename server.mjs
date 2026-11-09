@@ -26,7 +26,7 @@ const allowed = new Set(Object.keys(types));
 const publicPages = new Set([
   '/index.html', '/about.html', '/404.html', '/error.html',
   '/tokens.css', '/base.css', '/styles.css', '/app.js',
-  '/site.webmanifest', '/robots.txt', '/sitemap.xml',
+  '/site.webmanifest', '/robots.txt', '/sitemap.xml', '/llms.txt',
 ]);
 const assetsRoot = path.resolve(root, 'assets');
 

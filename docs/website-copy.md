@@ -159,3 +159,8 @@ Dhi’s Clock · Home · About Dhi · YouTube · dhisclock@dauji.net
 - Product context links: Created by Saudamini Mishra; Product details on Amazon; Questions before you order?
 - Move historical milestone evidence immediately after the product explanation.
 - Add From Dhi’s journal with the two exact user-supplied blog.dhisclock.com article destinations. Link labels are concise editorial descriptions, not quotations or claims of clinical validation.
+
+
+## November 7 media revision
+
+Header: “Curious about the clock?” → “Watch on YouTube”. The clock page adds “The clock in the press”, “See the idea take the stage” and “A closer look at Dhi’s Clock”. About adds “Meet Dhi through her interviews” and “Books, readers and conversations”. Removed the old “Out in the world” and launch-video sections. Captions and exact placement are in `assets/client/new/media.json` and `tools/media-placement.mjs`. One duplicate is omitted; all 57 unique media records are placed once. YouTube describes clock information, not an author channel.

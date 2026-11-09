@@ -9,3 +9,12 @@ Latest revision: campaign gallery hidden; milestones on Home. About recognition 
 
 ## Mobile refinement and journal
 Mobile order: headline, clock image, explanation and Amazon action. Faithful image proportions across previews and enlargement. Credibility links expose author, Amazon details and direct support near the product; milestones follow the explanation. Home now contains two user-supplied blog links. The blog subdomain currently fails DNS resolution; this is an external launch dependency.
+
+## Reviewed media, 7 November
+A slim question-and-YouTube bar sits below the shared header. New React static components group press, reveal footage, identity, interviews and literary records. Uncropped images, visible full-image actions and native expandable supporting galleries preserve the simple mobile layout. Source originals stay intact; captions describe supplied evidence without promoting its health or award claims.
+
+## Responsive gallery refinement, 9 November
+Contained image stages keep mixed archive proportions aligned without cropping. Gallery actions use secondary surfaces; Amazon remains primary. Viewers navigate visible records within their section, expose original files, announce loading/count state and restore focus. Mobile navigation targets are at least 44px.
+
+
+Gallery visibility: user explicitly requested all gallery images visible on 9 November. Evidence collections render in full with no collapsible controls. FAQ disclosures remain unchanged.

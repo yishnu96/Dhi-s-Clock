@@ -37,37 +37,61 @@
   document.addEventListener('visibilitychange', () => { if (!document.hidden) syncTheme(); });
 
   const dialog = document.querySelector('.gallery-dialog');
-  const gallery = [...document.querySelectorAll('[data-gallery]')].filter(link => !link.closest('[hidden]'));
-  if (dialog && typeof dialog.showModal === 'function' && gallery.length) {
+  const galleryLinks = [...document.querySelectorAll('[data-gallery]')];
+  if (dialog && typeof dialog.showModal === 'function' && galleryLinks.length) {
     const image = dialog.querySelector('#dialog-image');
     const caption = dialog.querySelector('#dialog-caption');
     const count = dialog.querySelector('.gallery-count');
     const failure = dialog.querySelector('.dialog-error');
     const fallback = dialog.querySelector('#dialog-fallback');
+    const original = dialog.querySelector('#dialog-original');
+    const loading = dialog.querySelector('.dialog-loading');
+    const previous = dialog.querySelector('.gallery-prev');
+    const next = dialog.querySelector('.gallery-next');
+    let gallery = [];
     let selected = 0;
     let opener;
     function showImage(index) {
       selected = (index + gallery.length) % gallery.length;
       const link = gallery[selected];
-      image.hidden = false;
+      image.hidden = true;
       failure.hidden = true;
+      loading.hidden = false;
       image.alt = link.querySelector('img')?.alt || link.dataset.caption;
       image.src = link.href;
       fallback.href = link.href;
+      original.href = link.href;
       caption.textContent = link.dataset.caption;
-      count.textContent = `${selected + 1} / ${gallery.length}`;
+      count.textContent = `Image ${selected + 1} of ${gallery.length}`;
+      previous.disabled = next.disabled = gallery.length < 2;
+      if (image.complete) finishImage();
     }
-    image.addEventListener('error', () => { image.hidden = true; failure.hidden = false; });
-    gallery.forEach((link, index) => link.addEventListener('click', event => {
+    function finishImage() {
+      loading.hidden = true;
+      image.hidden = !image.naturalWidth;
+      failure.hidden = !!image.naturalWidth;
+    }
+    image.addEventListener('load', finishImage);
+    image.addEventListener('error', finishImage);
+    galleryLinks.forEach(link => link.addEventListener('click', event => {
       if (event.ctrlKey || event.metaKey || event.shiftKey || event.altKey || event.button !== 0) return;
+      // Keep each collection local and respect the visitor's archive disclosures.
+      const collection = link.closest('section') || link.closest('figure');
+      gallery = galleryLinks.filter(candidate =>
+        collection?.contains(candidate) &&
+        !candidate.closest('[hidden], details:not([open])') &&
+        candidate.getClientRects().length > 0
+      );
+      if (!gallery.includes(link)) return;
       event.preventDefault();
       opener = link;
-      showImage(index);
+      showImage(gallery.indexOf(link));
       dialog.showModal();
+      root.dataset.galleryOpen = '';
     }));
     dialog.querySelector('.dialog-close').addEventListener('click', () => dialog.close());
-    dialog.querySelector('.gallery-prev').addEventListener('click', () => showImage(selected - 1));
-    dialog.querySelector('.gallery-next').addEventListener('click', () => showImage(selected + 1));
+    previous.addEventListener('click', () => showImage(selected - 1));
+    next.addEventListener('click', () => showImage(selected + 1));
     dialog.addEventListener('keydown', event => {
       if (event.key === 'ArrowLeft') { event.preventDefault(); showImage(selected - 1); }
       if (event.key === 'ArrowRight') { event.preventDefault(); showImage(selected + 1); }
@@ -77,7 +101,10 @@
       const rect = dialog.getBoundingClientRect();
       if (event.clientX < rect.left || event.clientX > rect.right || event.clientY < rect.top || event.clientY > rect.bottom) dialog.close();
     });
-    dialog.addEventListener('close', () => opener?.focus({ preventScroll: true }));
+    dialog.addEventListener('close', () => {
+      delete root.dataset.galleryOpen;
+      opener?.focus({ preventScroll: true });
+    });
   }
 
   document.querySelectorAll('video').forEach(video => {

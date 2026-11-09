@@ -7,7 +7,7 @@ Connect the repository to Netlify and use the included `netlify.toml` settings:
 - Build command: `npm run build`
 - Publish directory: `dist`
 
-The build is dependency-free. Use Node.js 24, selected by `.nvmrc` for Netlify and GitHub Actions. Run `npm ci --ignore-scripts`, then `npm run build` for a local preflight; the build validates both source pages and production output. Confirm the published deploy serves `/`, `/about.html`, `/404.html`, `/robots.txt`, and `/sitemap.xml` before attaching the production domain.
+The build uses React and React DOM for static media components; install the locked dependencies before building. Use Node.js 24, selected by `.nvmrc` for Netlify and GitHub Actions. Run `npm ci --ignore-scripts`, then `npm run build` for a local preflight; the build validates both source pages and production output. Confirm the published deploy serves `/`, `/about.html`, `/404.html`, `/robots.txt`, and `/sitemap.xml` before attaching the production domain.
 
 The GitHub Actions workflow performs validation only; Netlify handles deployment when the repository is connected. No environment variables or secrets are required for the static build. The included Netlify configuration sets content-type protection, referrer and permissions policies alongside cache headers.
 

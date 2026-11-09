@@ -4,7 +4,7 @@ A fast, accessible two-page site for Dhi’s Clock, Saudamini Mishra’s work an
 
 ## Local development
 
-Use Node.js 24 (selected in `.nvmrc` and CI); there are no npm dependencies.
+Use Node.js 24 (selected in `.nvmrc` and CI); React and React DOM render the new media sections during the build; no React bundle is sent to visitors.
 
 ```powershell
 npm ci --ignore-scripts
@@ -36,3 +36,7 @@ Edit content/layout in `tools/render-pages.mjs`, media descriptions in `assets/c
 The campaign gallery is currently hidden by request. The theme starts automatically from local time (06:00–17:59 light); the toggle changes to the opposite mode and retains the choice for this browser session. The single button always names the next action: Dark mode or Light mode.
 
 `node tools/smoke.mjs http://127.0.0.1:4174` performs read-only HTTP checks against a running local production preview. See `docs/verification.md` for completed checks and external publishing steps.
+
+## Reviewed media
+
+The November media additions are catalogued in `assets/client/new/media.json`; `tools/media-placement.mjs` defines their page, order and headings. `tools/media-sections.mjs` renders these as React components at build time. The audit in `docs/media-audit-2026-11-07.md` records source evidence and duplicates. Edit these source files rather than generated HTML.

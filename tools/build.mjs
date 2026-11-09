@@ -4,7 +4,7 @@ import { fileURLToPath } from 'node:url';
 
 const root = fileURLToPath(new URL('../', import.meta.url));
 const out = path.join(root, 'dist');
-const required = ['index.html', 'about.html', '404.html', 'error.html', 'tokens.css', 'base.css', 'styles.css', 'app.js', 'site.webmanifest', 'robots.txt', 'sitemap.xml'];
+const required = ['index.html', 'about.html', '404.html', 'error.html', 'tokens.css', 'base.css', 'styles.css', 'app.js', 'site.webmanifest', 'robots.txt', 'sitemap.xml', 'llms.txt'];
 for (const file of required) {
   try { if (!(await stat(path.join(root, file))).isFile()) throw new Error(); }
   catch { throw new Error(`Required production file is missing: ${file}`); }
