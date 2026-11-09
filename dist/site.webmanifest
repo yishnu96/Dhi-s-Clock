@@ -7,5 +7,12 @@
   "display": "standalone",
   "background_color": "#ffffff",
   "theme_color": "#ffffff",
-  "icons": [{ "src": "/assets/favicon.svg", "sizes": "any", "type": "image/svg+xml", "purpose": "any" }]
+  "icons": [
+    {
+      "src": "/assets/client/clock-transparent.png",
+      "sizes": "449x556",
+      "type": "image/png",
+      "purpose": "any"
+    }
+  ]
 }

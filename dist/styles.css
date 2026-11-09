@@ -332,3 +332,42 @@ button:disabled,select:disabled{opacity:.5;cursor:not-allowed}
  .dialog-media{height:42dvh;min-height:80px}
  .dialog-toolbar,.dialog-bottom{margin-top:8px}
 }
+/* Media group densities follow the requested browsing hierarchy. */
+.evidence-title-link{display:flex;align-items:center;gap:8px;min-height:44px;text-decoration:underline;text-underline-offset:4px}
+.evidence-title-link svg{width:16px;height:16px;flex-shrink:0}
+#clock-coverage .evidence-grid{grid-template-columns:repeat(4,minmax(0,1fr));max-width:none;gap:28px 20px}
+#clock-coverage .evidence-visual{height:280px;padding:8px}
+#clock-coverage .evidence-record h3{font-size:22px}
+#clock-reveal .evidence-grid--events{grid-template-columns:repeat(5,minmax(0,1fr));max-width:none;gap:28px 16px;margin-top:40px}
+#clock-reveal .evidence-grid--events .evidence-visual{height:240px;padding:8px}
+#clock-reveal .evidence-grid--events h3{font-size:21px}
+#clock-reveal .evidence-grid--videos{grid-template-columns:repeat(2,minmax(0,1fr));max-width:900px;margin-inline:auto}
+.usage-steps{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:32px;margin-bottom:48px}
+.usage-steps h3{font-size:28px;margin-bottom:12px}
+.usage-steps p{font-size:15px;line-height:1.8;color:var(--color-ink-2)}
+.usage-film{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:48px;align-items:center;margin-bottom:48px}
+.usage-film h3{font-size:clamp(32px,4vw,52px)}
+.usage-section>.text-link{margin-top:32px}
+.evidence-grid--milestones{margin-top:48px}
+@media(max-width:760px){
+ #clock-coverage .evidence-grid{grid-template-columns:repeat(2,minmax(0,1fr));gap:24px 12px}
+ #clock-coverage .evidence-visual{height:220px;padding:6px}
+ #clock-coverage .evidence-record h3{font-size:19px}
+ #clock-coverage .evidence-action{padding:8px;font-size:12px;gap:4px}
+ #clock-reveal .evidence-grid--events{grid-template-columns:repeat(3,minmax(0,1fr));gap:24px 8px}
+ #clock-reveal .evidence-grid--events .evidence-visual{height:150px;padding:4px}
+ #clock-reveal .evidence-grid--events h3{font-family:var(--font-body);font-size:12px;line-height:1.5;overflow-wrap:anywhere;text-wrap:wrap}
+ #clock-reveal .evidence-grid--events figcaption{margin-top:12px}
+ #clock-reveal .evidence-grid--events .evidence-action{padding:8px 4px;gap:4px;font-size:11px;line-height:1.4;min-height:44px}
+ #clock-reveal .evidence-grid--events .evidence-action svg{display:none}
+ #clock-reveal .evidence-grid--videos{grid-template-columns:minmax(0,1fr)}
+ .usage-steps,.usage-film{grid-template-columns:minmax(0,1fr);gap:28px}
+ .usage-film .prose{order:-1}
+}
+/* About Dhi: linked press archive and literary photographs. */
+#author-press .evidence-grid,#author-books .evidence-grid{grid-template-columns:repeat(4,minmax(0,1fr));max-width:none}
+#author-press .evidence-record h3,#author-books .evidence-record h3{font-family:var(--font-body);font-size:16px;line-height:1.5}
+.author-video-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:24px}
+.author-video-grid video{width:100%;height:360px;object-fit:contain;background:var(--color-night)}
+.author-video-grid figcaption{margin-top:12px;font-size:14px}
+@media(max-width:760px){#author-press .evidence-grid,#author-books .evidence-grid{grid-template-columns:repeat(2,minmax(0,1fr));gap:24px 12px}#author-press .evidence-visual,#author-books .evidence-visual{height:220px}#author-press .evidence-record h3,#author-books .evidence-record h3{font-size:13px}.author-video-grid{grid-template-columns:minmax(0,1fr)}}
