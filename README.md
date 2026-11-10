@@ -27,7 +27,7 @@ Repository housekeeping is included: `.gitignore` excludes generated output, dep
 
 ## Search engines
 
-The canonical host is `https://www.dhisclock.com`. Configure the hosting provider to redirect alternate host and HTTP traffic to that HTTPS host. After the domain is serving the final build, verify domain ownership in Google Search Console, then submit `https://www.dhisclock.com/sitemap.xml`. Verification and sitemap submission require access to the owner’s Search Console property; they are not part of this repository build.
+The canonical host is `https://dhisclock.com`. Configure the hosting provider to redirect alternate host and HTTP traffic to that HTTPS host. After the domain is serving the final build, verify domain ownership in Google Search Console, then submit `https://dhisclock.com/sitemap.xml`. Verification and sitemap submission require access to the owner’s Search Console property; they are not part of this repository build.
 
 ## Editing the site
 

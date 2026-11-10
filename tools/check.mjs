@@ -22,15 +22,15 @@ for (const page of htmlPages) {
     if (!metas.description || descriptions.has(metas.description)) fail.push(`${page}: missing or duplicate description`);
     titles.add(title); descriptions.add(metas.description);
     for (const key of ['og:type','og:title','og:description','og:url','og:image','og:image:alt','twitter:card','twitter:title','twitter:description','twitter:image','twitter:image:alt']) if (!metas[key]) fail.push(`${page}: empty or missing ${key}`);
-    if (metas['og:url'] !== `https://www.dhisclock.com/${page === 'index.html' ? '' : page}`) fail.push(`${page}: social URL disagrees with canonical`);
+    if (metas['og:url'] !== `https://dhisclock.com/${page === 'index.html' ? '' : page}`) fail.push(`${page}: social URL disagrees with canonical`);
     if (metas['twitter:card'] !== 'summary_large_image') fail.push(`${page}: unexpected Twitter card type`);
     for (const key of ['og:image','twitter:image']) {
-      try { const url = new URL(metas[key]); if (url.origin !== 'https://www.dhisclock.com') throw new Error(); await access(path.join(root, url.pathname)); }
+      try { const url = new URL(metas[key]); if (url.origin !== 'https://dhisclock.com') throw new Error(); await access(path.join(root, url.pathname)); }
       catch { fail.push(`${page}: invalid or missing social image ${key}`); }
     }
     if (!/<link\b[^>]*rel="icon"/i.test(html) || !/<link\b[^>]*rel="manifest"/i.test(html)) fail.push(`${page}: missing icon or manifest link`);
     const canonical = html.match(/<link\b[^>]*\brel=["']canonical["'][^>]*>/i)?.[0];
-    if (!canonical || attr(canonical, 'href') !== `https://www.dhisclock.com/${page === 'index.html' ? '' : page}`) fail.push(`${page}: incorrect or missing canonical URL`);
+    if (!canonical || attr(canonical, 'href') !== `https://dhisclock.com/${page === 'index.html' ? '' : page}`) fail.push(`${page}: incorrect or missing canonical URL`);
     for (const name of ['description', 'og:title', 'og:description', 'og:url', 'og:image', 'twitter:card']) {
       if (!new RegExp(`<meta\\b[^>]*\\b(?:name|property)=["']${name.replace(/[.*+?^${}()|[\]\\]/g, '\\$&')}["']`, 'i').test(html)) fail.push(`${page}: missing ${name} metadata`);
     }
@@ -75,12 +75,12 @@ for (const page of htmlPages) {
 let sitemap = '';
 try {
   const robots = await read('robots.txt');
-  if (!/^User-agent:\s*\*/mi.test(robots) || !/^Allow:\s*\/$/mi.test(robots) || !robots.includes('Sitemap: https://www.dhisclock.com/sitemap.xml') || /^Disallow:\s*\/$/mi.test(robots)) fail.push('robots.txt: unexpected crawl policy or sitemap');
+  if (!/^User-agent:\s*\*/mi.test(robots) || !/^Allow:\s*\/$/mi.test(robots) || !robots.includes('Sitemap: https://dhisclock.com/sitemap.xml') || /^Disallow:\s*\/$/mi.test(robots)) fail.push('robots.txt: unexpected crawl policy or sitemap');
   const llms = await read('llms.txt');
-  if (!llms.startsWith('# ') || !llms.includes('https://www.dhisclock.com/about.html')) fail.push('llms.txt: missing site summary or About link');
+  if (!llms.startsWith('# ') || !llms.includes('https://dhisclock.com/about.html')) fail.push('llms.txt: missing site summary or About link');
 } catch { fail.push('robots.txt or llms.txt is missing'); }
 try { sitemap = await read('sitemap.xml'); } catch { fail.push('sitemap.xml is missing'); }
-for (const url of ['https://www.dhisclock.com/', 'https://www.dhisclock.com/about.html']) if (!sitemap.includes(`<loc>${url}</loc>`)) fail.push(`sitemap.xml is missing ${url}`);
+for (const url of ['https://dhisclock.com/', 'https://dhisclock.com/about.html']) if (!sitemap.includes(`<loc>${url}</loc>`)) fail.push(`sitemap.xml is missing ${url}`);
 try {
   const manifest = JSON.parse(await read('site.webmanifest'));
   if (!manifest.name || !Array.isArray(manifest.icons)) fail.push('site.webmanifest needs a name and icons array');

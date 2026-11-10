@@ -5,8 +5,8 @@
 The website explains the concept and presents the creator’s writing, interviews and supplied archive photographs. Personalisation, current pricing, availability, delivery and checkout are handled on Amazon. Archived ranking screenshots are historical, not current rankings. The site does not establish scientific or medical validation of the clock’s guidance.
 
 ## Main pages
-- [Dhi’s Clock](https://www.dhisclock.com/): Product explanation, daily/monthly/yearly guidance, frequently asked questions and ordering links.
-- [About Saudamini Mishra](https://www.dhisclock.com/about.html): Creator biography, books, interviews and literary appearances.
+- [Dhi’s Clock](https://dhisclock.com/): Product explanation, daily/monthly/yearly guidance, frequently asked questions and ordering links.
+- [About Saudamini Mishra](https://dhisclock.com/about.html): Creator biography, books, interviews and literary appearances.
 
 ## Official destinations
 - [Shop on Amazon](https://amzn.in/d/0ajtVb94): Current product and personalisation details.

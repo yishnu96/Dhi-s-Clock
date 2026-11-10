@@ -2,12 +2,44 @@
   command = "npm run build"
   publish = "dist"
 
+[build.environment]
+  NODE_VERSION = "24"
+
+# Canonical pages use .html; avoid a /about <-> /about.html redirect loop.
+[build.processing.html]
+  pretty_urls = false
+
+[[redirects]]
+  from = "https://www.dhisclock.com/*"
+  to = "https://dhisclock.com/:splat"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "http://www.dhisclock.com/*"
+  to = "https://dhisclock.com/:splat"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "http://dhisclock.com/*"
+  to = "https://dhisclock.com/:splat"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/index.html"
+  to = "/"
+  status = 301
+  force = true
+
 [[headers]]
   for = "/*"
   [headers.values]
     X-Content-Type-Options = "nosniff"
     Referrer-Policy = "strict-origin-when-cross-origin"
     Permissions-Policy = "camera=(), microphone=(), geolocation=()"
+    X-Frame-Options = "SAMEORIGIN"
 
 [[redirects]]
   from = "/about"
